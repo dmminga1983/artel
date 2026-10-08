@@ -1,6 +1,8 @@
 # Artel
 
-**A lean, security-first marketplace of agents and skills for Claude Code.** Install a small core (12 agents, 17 skills, a leak guard), then add only the stack packs you use: Python, TypeScript, Go, Rust, Java/Kotlin, .NET, PHP, Ruby, Swift, Flutter, C/C++, data, DevOps, web, content.
+**The Claude Code team that plans, builds, verifies and ships your code — and never lets a secret slip out.**
+
+Most agent marketplaces throw hundreds of skills at you and hope a few stick. Artel does the opposite: a tight 12-agent core (~3k tokens, always on) plus 15 optional packs you add only when you need them — one skill per stack, not one per framework. A guard hook blocks leaking API keys, tokens and `.env` files before they ever reach a commit, and a dedicated `verifier` agent double-checks finished work instead of grading its own homework. Free, MIT-licensed, zero network calls, zero telemetry.
 
 [Русская версия →](README.ru.md)
 
@@ -12,7 +14,7 @@
 
 Then type `/artel:start` — Artel asks what you want to do and points to one next step.
 
-*Artel* (артель) is a Russian word for a cooperative team of craftsmen.
+*Artel* (артель) is a Russian word for a cooperative team of craftsmen — people who own their tools and share the work.
 
 ---
 
