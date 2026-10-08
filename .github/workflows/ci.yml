@@ -1,0 +1,34 @@
+name: CI
+
+# Safe triggers only: `pull_request` runs fork PRs without secrets and with a
+# read-only token. Never switch this to `pull_request_target`.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Validate, test, scan (Node ${{ matrix.node }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: ['18', '22']
+    steps:
+      # Actions are pinned to full commit SHAs (tags can be moved).
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0 # the secret scan reads the full history
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: ${{ matrix.node }}
+      - run: git config --global user.email ci@example.com && git config --global user.name CI
+      - run: node tools/validate.mjs
+      - run: node --test
+      - run: node hooks/scripts/scan-secrets.mjs --history

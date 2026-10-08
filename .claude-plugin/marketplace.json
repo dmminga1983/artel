@@ -1,0 +1,19 @@
+{
+  "name": "artel",
+  "owner": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "metadata": {
+    "description": "Artel — a bilingual team of agents and skills for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "artel",
+      "source": ".",
+      "description": "A bilingual (RU/EN) team of agents and skills: plan, build, verify and publish safely.",
+      "category": "productivity",
+      "tags": ["agents", "skills", "security", "russian"]
+    }
+  ]
+}

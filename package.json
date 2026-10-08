@@ -1,0 +1,17 @@
+{
+  "name": "artel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Artel — a bilingual team of agents and skills for Claude Code.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "validate": "node tools/validate.mjs",
+    "scan": "node hooks/scripts/scan-secrets.mjs --history",
+    "check": "node tools/validate.mjs && node --test && node hooks/scripts/scan-secrets.mjs --history"
+  }
+}
