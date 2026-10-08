@@ -1,6 +1,6 @@
 # Artel
 
-**A lean, security-first marketplace of agents and skills for Claude Code.** Install a small core (12 agents, 16 skills, a leak guard), then add only the stack packs you use: Python, TypeScript, Go, Rust, Java/Kotlin, .NET, PHP, Ruby, Swift, Flutter, C/C++, data, DevOps, web, content.
+**A lean, security-first marketplace of agents and skills for Claude Code.** Install a small core (12 agents, 17 skills, a leak guard), then add only the stack packs you use: Python, TypeScript, Go, Rust, Java/Kotlin, .NET, PHP, Ruby, Swift, Flutter, C/C++, data, DevOps, web, content.
 
 [Русская версия →](README.ru.md)
 
@@ -22,7 +22,7 @@ Big toolkits such as [ECC](https://github.com/affaan-m/ECC) ship hundreds of ski
 
 | | ECC (as measured, Oct 2026) | Artel |
 |---|---|---|
-| Always-on context cost | ~44.8k tokens | **~2.9k tokens** for the core; ~180 per stack pack |
+| Always-on context cost | ~44.8k tokens | **~3.0k tokens** for the core; ~180 per stack pack |
 | Structure | one big plugin, ~68 agents, ~290 skills | core + 15 optional packs; **one skill per stack** with reference files read on demand |
 | Security | configuration scanner | **a guard that is on from install**: blocks commits and pushes containing keys, tokens or `.env`/key files |
 | Independent checking | — | a `verifier` agent that never grades its own work |
@@ -79,6 +79,7 @@ An agent is a helper with one role and its own context. Claude delegates automat
 | `/artel:secure-publish` | Secrets, `.gitignore` and Actions check before publishing |
 | `/artel:secrets-setup` | `.env`, `.env.example` and key protection |
 | `/artel:repo-audit` | Audit someone else's repo or plugin before installing it |
+| `/artel:injection-defense` | Protect LLM apps, bots and agents from prompt injection; red-team checklist |
 | `/artel:make-skill` | Create your own skill or agent |
 
 ## Stack packs

@@ -2,7 +2,7 @@
   "name": "artel",
   "displayName": "Artel",
   "version": "1.0.0",
-  "description": "Core: 12 agents and 16 skills to plan, build, verify and publish safely, plus a hook that blocks leaking secrets and asks before destructive commands.",
+  "description": "Core: 12 agents and 17 skills to plan, build, verify and publish safely, plus a hook that blocks leaking secrets and asks before destructive commands.",
   "author": {
     "name": "dmminga1983",
     "url": "https://github.com/dmminga1983"

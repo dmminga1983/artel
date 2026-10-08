@@ -4,7 +4,8 @@
 
 Artel becomes a universal marketplace.
 
-- Core `artel`: 12 agents (planner, architect, verifier, code-reviewer, security-auditor, test-engineer, debugger, build-fixer, refactorer, performance-engineer, researcher, docs-writer) and 16 skills; always-on cost ≈ 2.9k tokens.
+- Core `artel`: 12 agents (planner, architect, verifier, code-reviewer, security-auditor, test-engineer, debugger, build-fixer, refactorer, performance-engineer, researcher, docs-writer) and 17 skills; always-on cost ≈ 3.0k tokens.
+- Prompt-injection hardening: `/artel:injection-defense` skill (threat model, architecture checklist, red-team tests) and an "Untrusted content" rule in every agent and in the skills that read external content.
 - 13 stack packs, one skill each with reference files: Python, TypeScript, Go, Rust, JVM, .NET, PHP, Ruby, Swift, Flutter, C/C++, data, DevOps.
 - `artel-web` and `artel-content` packs (websites, bots, video scripts, unit economics).
 - Guard hook moved into the core plugin (`plugins/artel/hooks`).

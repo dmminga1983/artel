@@ -17,6 +17,7 @@ Reply in the user's language. Ask what they want to get done, then point to **on
 | Publish code safely / Безопасно выложить | `/artel:secure-publish` | `security-auditor` |
 | Set up secrets / Настроить .env и ключи | `/artel:secrets-setup` | — |
 | Vet someone else's repo / Проверить чужой репозиторий | `/artel:repo-audit` | `security-auditor` |
+| Protect an LLM app or bot from prompt injection / Защита от промт-инъекций | `/artel:injection-defense` | `security-auditor` |
 | Review code / Ревью кода | `/artel:code-review` | `code-reviewer` |
 | Tests first / Тесты | `/artel:tdd` | `test-engineer` |
 | Find a bug / Найти причину ошибки | `/artel:debug` | `debugger` |

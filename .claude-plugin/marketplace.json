@@ -11,7 +11,7 @@
     {
       "name": "artel",
       "source": "./plugins/artel",
-      "description": "Core: 12 agents and 16 skills to plan, build, verify and publish safely, plus a hook that blocks leaking secrets and asks before destructive commands.",
+      "description": "Core: 12 agents and 17 skills to plan, build, verify and publish safely, plus a hook that blocks leaking secrets and asks before destructive commands.",
       "category": "productivity",
       "tags": [
         "agents",
