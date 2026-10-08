@@ -1,0 +1,17 @@
+{
+  "name": "artel-go",
+  "displayName": "Artel · Go",
+  "version": "1.0.0",
+  "description": "Go stack pack: modules, idioms, errors, concurrency, testing, security and review checklist.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "go",
+    "golang"
+  ]
+}

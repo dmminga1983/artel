@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILLS = ROOT / "skills"
+SKILLS_DIRS = sorted((ROOT / "plugins").glob("*/skills"))
 DIST = ROOT / "dist"
 
 
@@ -30,9 +30,12 @@ def package(skill_dir: Path) -> Path:
 
 
 def main() -> None:
-    names = sys.argv[1:] or sorted(p.name for p in SKILLS.iterdir() if p.is_dir())
+    found = {d.name: d for sd in SKILLS_DIRS for d in sd.iterdir() if d.is_dir()}
+    names = sys.argv[1:] or sorted(found)
     for name in names:
-        out = package(SKILLS / name)
+        if name not in found:
+            raise SystemExit(f"{name}: skill not found")
+        out = package(found[name])
         print(f"packaged {out.relative_to(ROOT)}")
 
 

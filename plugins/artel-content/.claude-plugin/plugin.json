@@ -1,0 +1,19 @@
+{
+  "name": "artel-content",
+  "displayName": "Artel · Content",
+  "version": "1.0.0",
+  "description": "Content and business pack: video scripts, articles, content plans and unit economics.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "content",
+    "video",
+    "writing",
+    "business"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "artel-cpp",
+  "displayName": "Artel · C/C++",
+  "version": "1.0.0",
+  "description": "C/C++ stack pack: CMake, modern C++, memory safety, sanitizers, testing, build and linker errors.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "cpp",
+    "c",
+    "cmake"
+  ]
+}

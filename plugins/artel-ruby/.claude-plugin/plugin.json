@@ -1,0 +1,17 @@
+{
+  "name": "artel-ruby",
+  "displayName": "Artel · Ruby",
+  "version": "1.0.0",
+  "description": "Ruby stack pack: Bundler, Rails, RSpec/Minitest, RuboCop, security pitfalls and performance.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "ruby",
+    "rails"
+  ]
+}

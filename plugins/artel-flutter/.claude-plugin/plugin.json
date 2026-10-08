@@ -1,0 +1,17 @@
+{
+  "name": "artel-flutter",
+  "displayName": "Artel · Flutter",
+  "version": "1.0.0",
+  "description": "Dart/Flutter stack pack: project layout, state management, widget testing, platform builds, performance.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "dart",
+    "flutter"
+  ]
+}

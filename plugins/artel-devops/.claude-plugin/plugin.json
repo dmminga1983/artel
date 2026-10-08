@@ -1,0 +1,19 @@
+{
+  "name": "artel-devops",
+  "displayName": "Artel · DevOps",
+  "version": "1.0.0",
+  "description": "DevOps pack: Docker, Compose, Kubernetes, Terraform, GitHub Actions and CI hardening, deploy and observability.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "docker",
+    "kubernetes",
+    "terraform",
+    "ci"
+  ]
+}

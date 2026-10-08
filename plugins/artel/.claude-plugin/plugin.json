@@ -1,0 +1,22 @@
+{
+  "name": "artel",
+  "displayName": "Artel",
+  "version": "1.0.0",
+  "description": "Core: 12 agents and 16 skills to plan, build, verify and publish safely, plus a hook that blocks leaking secrets and asks before destructive commands.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "skills",
+    "security",
+    "workflow"
+  ],
+  "experimental": {
+    "evals": "evals"
+  }
+}

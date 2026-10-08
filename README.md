@@ -1,156 +1,153 @@
 # Artel
 
-**Артель — команда ИИ-агентов и навыков для Claude Code.** Планирует, делает, проверяет и безопасно публикует: код, сайты, Telegram-боты, видео-контент, бизнес-расчёты и разбор строительных экспертиз. Говорит по-русски и по-английски.
+**A lean, security-first marketplace of agents and skills for Claude Code.** Install a small core (12 agents, 16 skills, a leak guard), then add only the stack packs you use: Python, TypeScript, Go, Rust, Java/Kotlin, .NET, PHP, Ruby, Swift, Flutter, C/C++, data, DevOps, web, content.
 
-[English version →](README.en.md)
+[Русская версия →](README.ru.md)
 
 ```
 /plugin marketplace add dmminga1983/artel
 /plugin install artel@artel
+/plugin install artel-python@artel      # add the packs you need
 ```
 
-После установки напишите `/artel:start` — Artel спросит, что нужно сделать, и подскажет, с чего начать.
+Then type `/artel:start` — Artel asks what you want to do and points to one next step.
+
+*Artel* (артель) is a Russian word for a cooperative team of craftsmen.
 
 ---
 
-## Чем Artel отличается
+## Why Artel
 
-Artel вдохновлён проектом [ECC](https://github.com/affaan-m/ECC) (огромный набор агентов для разработчиков), но устроен по-другому (данные об ECC — по его странице на октябрь 2026):
+Big toolkits such as [ECC](https://github.com/affaan-m/ECC) ship hundreds of skills at once. Claude Code caps the skill listing at about 1% of the context window, so on overflow most descriptions are dropped and skills stop triggering — and the always-on cost is paid in every session. Artel makes different choices:
 
-| | ECC | Artel |
+| | ECC (as measured, Oct 2026) | Artel |
 |---|---|---|
-| Язык | английский | русский и английский — агенты отвечают на языке пользователя, навыки понимают запросы на обоих |
-| Для кого | разработчики | разработчики **и** те, кто не пишет код: сайты, боты, контент, бизнес, строительные дела |
-| Безопасность | сканер конфигурации AgentShield | **сторож включён сразу после установки**: не даёт закоммитить или запушить ключи, токены, `.env` |
-| Размер | ~68 агентов и ~290 навыков | 14 агентов и 20 навыков — каждый файл можно прочитать за пару минут |
-| Сеть и деньги | платные тарифы и партнёрские ссылки | ничего не отправляет в сеть, нет платных действий, рекламы и телеметрии |
+| Always-on context cost | ~44.8k tokens | **~2.9k tokens** for the core; ~180 per stack pack |
+| Structure | one big plugin, ~68 agents, ~290 skills | core + 15 optional packs; **one skill per stack** with reference files read on demand |
+| Security | configuration scanner | **a guard that is on from install**: blocks commits and pushes containing keys, tokens or `.env`/key files |
+| Independent checking | — | a `verifier` agent that never grades its own work |
+| Languages | English | agents reply in the user's language; skills trigger in Russian and English |
+| Network and money | paid tiers, referral links | no network calls, no paid actions, no ads, no telemetry |
+| Dependencies | — | none; Node ≥ 18 only for the guard, which fails open |
 
-Плюс отдельный агент `verifier`, который проверяет готовую работу «свежим взглядом», — тот, кто делал, сам себе оценку не ставит.
+Token numbers come from `claude plugin details`; reproduce them after installing.
 
-## Как работает Artel
+## The Artel loop
 
-1. **План** — перед многошаговой задачей (`/artel:plan-first`).
-2. **Работа** — маленькими шагами, которые можно проверить.
-3. **Проверка** — запустить, открыть, сверить с источниками (`/artel:verify-done`).
-4. **Безопасная публикация** — сначала проверка на секреты, потом push (`/artel:secure-publish`).
+1. **Plan** multi-step work first (`/artel:plan-first`).
+2. **Build** in small, checkable steps.
+3. **Verify**: run it, open it, check sources (`/artel:verify-done`).
+4. **Publish safely**: secret scan first, push second (`/artel:secure-publish`).
 
-## Агенты
+## Core (`artel@artel`)
 
-Агент — помощник с узкой ролью и своим контекстом. Claude сам передаёт ему подходящую задачу, или можно попросить явно: «пусть `security-auditor` проверит репозиторий».
+### Agents
 
-| Агент | Что делает |
+An agent is a helper with one role and its own context. Claude delegates automatically, or ask: "have `security-auditor` check this repo". When a stack pack is installed, the agents load it for the detected stack.
+
+| Agent | What it does |
 |---|---|
-| `planner` | Превращает размытую задачу в пошаговый план с критериями готовности |
-| `architect` | Выбирает стек и структуру проекта, считает компромиссы |
-| `verifier` | Независимо проверяет готовую работу: запускает, открывает, сверяет факты |
-| `code-reviewer` | Ревью кода: ошибки, тесты, читаемость — по важности |
-| `security-auditor` | Аудит безопасности: секреты в истории, `.gitignore`, GitHub Actions, зависимости |
-| `test-engineer` | Пишет автотесты: сначала тест, потом код |
-| `debugger` | Ищет настоящую причину ошибки, а не латает симптом |
-| `researcher` | Исследование с источниками: каждое утверждение — со ссылкой |
-| `docs-writer` | Понятные README и инструкции |
-| `web-builder` | Сайты и лендинги: быстрые, адаптивные, с SEO |
-| `bot-builder` | Telegram-боты с безопасным хранением токена |
-| `content-producer` | Сценарии рилсов и YouTube, хуки, раскадровки, контент-план, AI-персонажи |
-| `business-analyst` | Юнит-экономика, маржа, окупаемость идеи |
-| `claims-analyst` | Гарантийные дела, претензии и строительно-технические экспертизы |
+| `planner` | Turns a vague task into a step-by-step plan with a definition of done |
+| `architect` | Chooses stack and structure; records trade-offs |
+| `verifier` | Independently checks finished work: runs it, opens it, checks facts |
+| `code-reviewer` | Review ranked by severity: bugs, security, tests, clarity |
+| `security-auditor` | Secrets in history, `.gitignore`, GitHub Actions, dependencies |
+| `test-engineer` | Writes tests, test-first |
+| `debugger` | Finds the root cause, not the symptom |
+| `build-fixer` | Fixes broken builds and failing CI with the smallest change |
+| `refactorer` | Restructures code in small steps with tests as a safety net |
+| `performance-engineer` | Measures first, then optimises the real bottleneck |
+| `researcher` | Research with sources: every claim linked |
+| `docs-writer` | Clear READMEs and instructions |
 
-## Навыки (skills)
+### Skills
 
-Навык — пошаговый сценарий. Вызывается командой или включается сам, когда запрос подходит.
-
-**Работа и качество**
-
-| Команда | Что делает |
+| Command | What it does |
 |---|---|
-| `/artel:start` | С чего начать — подбирает агента или навык под задачу |
-| `/artel:plan-first` | План и критерии готовности до начала работы |
-| `/artel:verify-done` | Проверка перед сдачей |
-| `/artel:code-review` | Ревью текущих изменений |
-| `/artel:tdd` | Разработка через тесты |
-| `/artel:debug` | Поиск причины ошибки |
-| `/artel:research` | Исследование с источниками |
-| `/artel:make-skill` | Сделать свой навык или агента |
+| `/artel:start` | Picks the agent, skill or pack for your task |
+| `/artel:plan-first` | Plan and definition of done before work starts |
+| `/artel:verify-done` | Verification before reporting "done" |
+| `/artel:code-review` | Review of the current changes |
+| `/artel:tdd` | Test-driven development |
+| `/artel:debug` | Systematic debugging |
+| `/artel:refactor` | Behaviour-preserving refactoring |
+| `/artel:perf` | Profile, fix the bottleneck, re-measure |
+| `/artel:onboard` | Understand an unfamiliar codebase quickly |
+| `/artel:git-workflow` | Branches, commits, pull requests |
+| `/artel:ship` | Pre-release checklist, changelog, tag |
+| `/artel:research` | Research with sources |
+| `/artel:secure-publish` | Secrets, `.gitignore` and Actions check before publishing |
+| `/artel:secrets-setup` | `.env`, `.env.example` and key protection |
+| `/artel:repo-audit` | Audit someone else's repo or plugin before installing it |
+| `/artel:make-skill` | Create your own skill or agent |
 
-**Безопасность**
+## Stack packs
 
-| Команда | Что делает |
-|---|---|
-| `/artel:secure-publish` | Проверка на секреты, `.gitignore` и Actions перед публикацией на GitHub |
-| `/artel:secrets-setup` | Настройка `.env`, `.env.example` и защиты ключей |
-| `/artel:repo-audit` | Проверка чужого репозитория или плагина перед установкой |
+Each pack is one skill: how to detect the project, defaults, idioms, errors, testing, security pitfalls, performance, a build-error table and a review checklist, plus reference files loaded on demand.
 
-**Сайты и боты**
+| Install | Command | Covers |
+|---|---|---|
+| `artel-python@artel` | `/artel-python:python` | uv/poetry/pip, typing, pytest, Django, FastAPI, Flask |
+| `artel-typescript@artel` | `/artel-typescript:typescript` | Node, React, Next.js, Vue, Angular, Svelte, Express/Nest |
+| `artel-go@artel` | `/artel-go:go` | modules, concurrency, testing, net/http, gRPC |
+| `artel-rust@artel` | `/artel-rust:rust` | cargo, ownership, async, unsafe review, axum |
+| `artel-jvm@artel` | `/artel-jvm:jvm` | Java, Kotlin, Gradle/Maven, Spring Boot, Android |
+| `artel-dotnet@artel` | `/artel-dotnet:dotnet` | C#, ASP.NET Core, EF Core |
+| `artel-php@artel` | `/artel-php:php` | Composer, Laravel, Symfony |
+| `artel-ruby@artel` | `/artel-ruby:ruby` | Bundler, Rails, RSpec |
+| `artel-swift@artel` | `/artel-swift:swift` | SwiftPM/Xcode, SwiftUI, concurrency |
+| `artel-flutter@artel` | `/artel-flutter:flutter` | Dart, state management, widget tests |
+| `artel-cpp@artel` | `/artel-cpp:cpp` | CMake, sanitizers, linker errors |
+| `artel-data@artel` | `/artel-data:data` | SQL, schema design, safe migrations, Redis |
+| `artel-devops@artel` | `/artel-devops:devops` | Docker, Kubernetes, Terraform, Actions hardening |
+| `artel-web@artel` | `/artel-web:landing-page`, `/artel-web:seo-audit`, `/artel-web:telegram-bot` | agents `web-builder`, `bot-builder` |
+| `artel-content@artel` | `/artel-content:reel-script`, `/artel-content:youtube-script`, `/artel-content:unit-economics` | agents `content-producer`, `business-analyst` |
 
-| Команда | Что делает |
-|---|---|
-| `/artel:landing-page` | Лендинг по короткому описанию + инструкция по бесплатному хостингу |
-| `/artel:seo-audit` | Аудит сайта: поиск, доступность, скорость, ссылки |
-| `/artel:telegram-bot` | Telegram-бот с токеном в `.env`, тестами и запуском 24/7 |
+## The leak guard
 
-**Контент и бизнес**
+The core installs a hook that runs before every `git commit` and `git push`:
 
-| Команда | Что делает |
-|---|---|
-| `/artel:reel-script` | Сценарий рилса / шортса: 3 хука, раскадровка по секундам |
-| `/artel:youtube-script` | Сценарий для YouTube: названия, обложки, главы, описание |
-| `/artel:unit-economics` | Окупится ли идея: маржа, сценарии, точка безубыточности |
+- **blocks** when the change contains an API key, token, private key or `.env`/key file;
+- **asks** on password-like values (in code, config, URLs, JWTs), on `--force` pushes to `main`/`master`, and on changes over 20 MB it could not fully scan;
+- understands `cd dir && git commit`, quoting, `bash -c`, git aliases, pushing another branch or tag, and `gh repo create --push`;
+- never modifies the repository and never sends anything anywhere;
+- fails open: if something goes wrong, it gets out of the way.
 
-**Строительство и претензии**
+It detects AWS, GitHub, Anthropic, OpenAI, Google, Slack, Stripe and other keys, bot tokens, private keys, and files such as `.env`, `.pem` and `id_rsa`.
 
-| Команда | Что делает |
-|---|---|
-| `/artel:expertise-audit` | Аудит строительно-технической экспертизы по цепочке доказательств |
-| `/artel:warranty-case` | Разбор гарантийного дела или иска: что доказано, кто отвечает, регресс к подрядчику |
-| `/artel:claim-letter` | Досудебная претензия, ответ на претензию, требование подрядчику |
+- False positive: add the comment `artel:allow` to that line.
+- Disable: start Claude Code with the environment variable `ARTEL_GUARD=off` (or set it in `env` in Claude Code settings). Setting it inside a command deliberately does not work.
+- Scan a whole repo including history: `/artel:secure-publish`, or `node plugins/artel/hooks/scripts/scan-secrets.mjs --history <repo>`.
+- It is a safety net, not a guarantee — see [SECURITY.md](SECURITY.md). Also enable GitHub secret scanning with push protection.
 
-## Сторож от утечек
+Requires **Node.js 18+**. Without Node the guard is silently inactive; everything else works.
 
-Artel ставит хук, который срабатывает перед каждой командой `git commit` и `git push`:
+## Uninstall
 
-- **блокирует**, если в изменениях есть ключ API, токен бота, приватный ключ или файл `.env`;
-- **спрашивает**, если видит похожее на пароль значение (в коде, в конфиге, внутри URL, JWT-токен), push с `--force` в `main`/`master` или изменение больше 20 МБ, которое не удалось проверить целиком;
-- понимает `cd папка && git commit`, кавычки, `bash -c`, алиасы git, push другой ветки или тега и `gh repo create --push`;
-- ничего не меняет в репозитории и никуда ничего не отправляет;
-- при сбое не мешает работе (просто пропускает проверку).
-
-Ловит ключи AWS, GitHub, Anthropic, OpenAI, Google, Slack, Stripe, Yandex Cloud, токены Telegram-ботов, приватные ключи и файлы `.env`, `.pem`, `id_rsa` и т. п.
-
-- Ложное срабатывание — добавьте в строку комментарий `artel:allow`.
-- Отключить — запустить Claude Code с переменной окружения `ARTEL_GUARD=off` (или прописать её в `env` в настройках Claude Code). Внутри команды (`ARTEL_GUARD=off git commit`) это не работает — так и задумано.
-- Проверить весь репозиторий вместе с историей — `/artel:secure-publish`, или вручную из папки Artel: `node hooks/scripts/scan-secrets.mjs --history <путь к репозиторию>`.
-- Это страховка, а не гарантия: что сторож не видит, описано в [SECURITY.md](SECURITY.md). Включите на GitHub ещё и secret scanning с push protection.
-
-Нужен **Node.js 18+**. Без Node сторож молча не работает — остальной Artel работает.
-
-## В приложении Claude (claude.ai)
-
-Навыки совместимы с приложением Claude. Соберите ZIP-архивы:
-
-```bash
-python3 tools/package_skills.py            # все навыки → dist/*.zip
-python3 tools/package_skills.py expertise-audit
+```
+/plugin uninstall artel@artel
+/plugin marketplace remove artel
 ```
 
-и загрузите нужный архив в настройках Claude, в разделе со skills. Агенты и сторож работают только в Claude Code.
+## In the Claude app (claude.ai)
 
-## Для разработчиков
+Skills are compatible with the Claude app. Build ZIP archives with `python3 tools/package_skills.py` (all skills) or `python3 tools/package_skills.py python`, then upload in Claude's settings. Agents and the guard work only in Claude Code.
+
+## Contributing
 
 ```bash
-npm run validate   # структура, frontmatter, документация
-npm test           # тесты сторожа и сканера
-npm run scan       # поиск секретов в файлах и истории
-claude plugin validate .
+npm run validate   # structure, frontmatter, budgets, documentation coverage
+npm test           # guard and scanner tests
+npm run scan       # secrets in files and history
+claude plugin validate . --strict
 ```
 
-Как добавить свой навык — `/artel:make-skill` или [CONTRIBUTING.md](CONTRIBUTING.md).
+New stack pack? See [docs/STACK_PACK_GUIDE.md](docs/STACK_PACK_GUIDE.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Важно
+## Note
 
-Агенты помогают, но не заменяют специалиста: юридические, налоговые и экспертные выводы проверяйте сами. Персональные данные (ФИО, адреса, паспортные данные) обезличивайте перед тем, как передавать их в ИИ-сервисы.
+The agents assist; they do not replace a professional. Check legal, tax and security-critical conclusions yourself, and anonymise personal data before sending it to any AI service. To report a vulnerability, see [SECURITY.md](SECURITY.md).
 
-О найденных уязвимостях — см. [SECURITY.md](SECURITY.md).
+## License
 
-## Лицензия
-
-[MIT](LICENSE) — бесплатно, для любых целей.
+[MIT](LICENSE)

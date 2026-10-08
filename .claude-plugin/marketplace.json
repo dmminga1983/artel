@@ -5,15 +5,188 @@
     "url": "https://github.com/dmminga1983"
   },
   "metadata": {
-    "description": "Artel — a bilingual team of agents and skills for Claude Code."
+    "description": "Artel — a lean, security-first team of agents and skills for Claude Code. Install the core, then only the stack packs you use."
   },
   "plugins": [
     {
       "name": "artel",
-      "source": ".",
-      "description": "A bilingual (RU/EN) team of agents and skills: plan, build, verify and publish safely.",
+      "source": "./plugins/artel",
+      "description": "Core: 12 agents and 16 skills to plan, build, verify and publish safely, plus a hook that blocks leaking secrets and asks before destructive commands.",
       "category": "productivity",
-      "tags": ["agents", "skills", "security", "russian"]
+      "tags": [
+        "agents",
+        "skills",
+        "security",
+        "workflow"
+      ]
+    },
+    {
+      "name": "artel-python",
+      "source": "./plugins/artel-python",
+      "description": "Python stack pack: project tooling, idioms, typing, pytest, security pitfalls, build-error playbook and review checklist; Django, FastAPI, Flask notes.",
+      "category": "development",
+      "tags": [
+        "python",
+        "django",
+        "fastapi"
+      ]
+    },
+    {
+      "name": "artel-typescript",
+      "source": "./plugins/artel-typescript",
+      "description": "JavaScript/TypeScript stack pack: Node, React, Next.js, Vue, Angular, Svelte — tooling, types, testing, security, bundle and build errors.",
+      "category": "development",
+      "tags": [
+        "typescript",
+        "javascript",
+        "react",
+        "nextjs",
+        "node"
+      ]
+    },
+    {
+      "name": "artel-go",
+      "source": "./plugins/artel-go",
+      "description": "Go stack pack: modules, idioms, errors, concurrency, testing, security and review checklist.",
+      "category": "development",
+      "tags": [
+        "go",
+        "golang"
+      ]
+    },
+    {
+      "name": "artel-rust",
+      "source": "./plugins/artel-rust",
+      "description": "Rust stack pack: cargo, ownership and lifetimes, error handling, async, testing, unsafe review, clippy.",
+      "category": "development",
+      "tags": [
+        "rust",
+        "cargo"
+      ]
+    },
+    {
+      "name": "artel-jvm",
+      "source": "./plugins/artel-jvm",
+      "description": "Java/Kotlin stack pack: Gradle/Maven, Spring Boot, Kotlin coroutines, Android, JUnit, security and build errors.",
+      "category": "development",
+      "tags": [
+        "java",
+        "kotlin",
+        "spring",
+        "android"
+      ]
+    },
+    {
+      "name": "artel-dotnet",
+      "source": "./plugins/artel-dotnet",
+      "description": "C#/.NET stack pack: SDK projects, ASP.NET Core, EF Core, async, xUnit/NUnit, security and build errors.",
+      "category": "development",
+      "tags": [
+        "csharp",
+        "dotnet",
+        "aspnet"
+      ]
+    },
+    {
+      "name": "artel-php",
+      "source": "./plugins/artel-php",
+      "description": "PHP stack pack: Composer, Laravel, Symfony, PHPUnit/Pest, static analysis, security pitfalls.",
+      "category": "development",
+      "tags": [
+        "php",
+        "laravel",
+        "symfony"
+      ]
+    },
+    {
+      "name": "artel-ruby",
+      "source": "./plugins/artel-ruby",
+      "description": "Ruby stack pack: Bundler, Rails, RSpec/Minitest, RuboCop, security pitfalls and performance.",
+      "category": "development",
+      "tags": [
+        "ruby",
+        "rails"
+      ]
+    },
+    {
+      "name": "artel-swift",
+      "source": "./plugins/artel-swift",
+      "description": "Swift stack pack: SwiftPM/Xcode, SwiftUI, concurrency, XCTest/Swift Testing, iOS app review.",
+      "category": "development",
+      "tags": [
+        "swift",
+        "ios",
+        "swiftui"
+      ]
+    },
+    {
+      "name": "artel-flutter",
+      "source": "./plugins/artel-flutter",
+      "description": "Dart/Flutter stack pack: project layout, state management, widget testing, platform builds, performance.",
+      "category": "development",
+      "tags": [
+        "dart",
+        "flutter"
+      ]
+    },
+    {
+      "name": "artel-cpp",
+      "source": "./plugins/artel-cpp",
+      "description": "C/C++ stack pack: CMake, modern C++, memory safety, sanitizers, testing, build and linker errors.",
+      "category": "development",
+      "tags": [
+        "cpp",
+        "c",
+        "cmake"
+      ]
+    },
+    {
+      "name": "artel-data",
+      "source": "./plugins/artel-data",
+      "description": "Data pack: SQL and schema design, PostgreSQL/MySQL/SQLite, migrations, ORMs, indexes and query tuning, Redis.",
+      "category": "development",
+      "tags": [
+        "sql",
+        "postgres",
+        "database",
+        "migrations"
+      ]
+    },
+    {
+      "name": "artel-devops",
+      "source": "./plugins/artel-devops",
+      "description": "DevOps pack: Docker, Compose, Kubernetes, Terraform, GitHub Actions and CI hardening, deploy and observability.",
+      "category": "development",
+      "tags": [
+        "docker",
+        "kubernetes",
+        "terraform",
+        "ci"
+      ]
+    },
+    {
+      "name": "artel-web",
+      "source": "./plugins/artel-web",
+      "description": "Web pack: agents and skills for websites, landing pages, SEO and accessibility audits, and chat bots.",
+      "category": "development",
+      "tags": [
+        "website",
+        "seo",
+        "accessibility",
+        "bots"
+      ]
+    },
+    {
+      "name": "artel-content",
+      "source": "./plugins/artel-content",
+      "description": "Content and business pack: video scripts, articles, content plans and unit economics.",
+      "category": "productivity",
+      "tags": [
+        "content",
+        "video",
+        "writing",
+        "business"
+      ]
     }
   ]
 }

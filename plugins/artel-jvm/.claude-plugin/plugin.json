@@ -1,0 +1,19 @@
+{
+  "name": "artel-jvm",
+  "displayName": "Artel · Java/Kotlin",
+  "version": "1.0.0",
+  "description": "Java/Kotlin stack pack: Gradle/Maven, Spring Boot, Kotlin coroutines, Android, JUnit, security and build errors.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "java",
+    "kotlin",
+    "spring",
+    "android"
+  ]
+}

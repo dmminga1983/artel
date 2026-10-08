@@ -1,0 +1,19 @@
+{
+  "name": "artel-web",
+  "displayName": "Artel · Web",
+  "version": "1.0.0",
+  "description": "Web pack: agents and skills for websites, landing pages, SEO and accessibility audits, and chat bots.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "website",
+    "seo",
+    "accessibility",
+    "bots"
+  ]
+}

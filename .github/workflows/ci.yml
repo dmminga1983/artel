@@ -31,4 +31,4 @@ jobs:
       - run: git config --global user.email ci@example.com && git config --global user.name CI
       - run: node tools/validate.mjs
       - run: node --test
-      - run: node hooks/scripts/scan-secrets.mjs --history
+      - run: node plugins/artel/hooks/scripts/scan-secrets.mjs --history

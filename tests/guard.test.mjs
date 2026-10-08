@@ -9,12 +9,12 @@ import { mkdtempSync, writeFileSync, rmSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { scanLine, sensitiveFileReason, scanPatch, mask } from '../hooks/scripts/secret-rules.mjs';
-import { parseGit, segments } from '../hooks/scripts/guard.mjs';
+import { scanLine, sensitiveFileReason, scanPatch, mask } from '../plugins/artel/hooks/scripts/secret-rules.mjs';
+import { parseGit, segments } from '../plugins/artel/hooks/scripts/guard.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const GUARD = join(here, '..', 'hooks', 'scripts', 'guard.mjs');
-const SCAN = join(here, '..', 'hooks', 'scripts', 'scan-secrets.mjs');
+const GUARD = join(here, '..', 'plugins', 'artel', 'hooks', 'scripts', 'guard.mjs');
+const SCAN = join(here, '..', 'plugins', 'artel', 'hooks', 'scripts', 'scan-secrets.mjs');
 
 const fake = {
   aws: 'AK' + 'IA' + 'Q'.repeat(16),

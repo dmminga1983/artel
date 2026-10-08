@@ -1,0 +1,17 @@
+{
+  "name": "artel-rust",
+  "displayName": "Artel · Rust",
+  "version": "1.0.0",
+  "description": "Rust stack pack: cargo, ownership and lifetimes, error handling, async, testing, unsafe review, clippy.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "rust",
+    "cargo"
+  ]
+}

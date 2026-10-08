@@ -1,0 +1,18 @@
+{
+  "name": "artel-python",
+  "displayName": "Artel · Python",
+  "version": "1.0.0",
+  "description": "Python stack pack: project tooling, idioms, typing, pytest, security pitfalls, build-error playbook and review checklist; Django, FastAPI, Flask notes.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "python",
+    "django",
+    "fastapi"
+  ]
+}

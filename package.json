@@ -11,7 +11,7 @@
   "scripts": {
     "test": "node --test",
     "validate": "node tools/validate.mjs",
-    "scan": "node hooks/scripts/scan-secrets.mjs --history",
-    "check": "node tools/validate.mjs && node --test && node hooks/scripts/scan-secrets.mjs --history"
+    "scan": "node plugins/artel/hooks/scripts/scan-secrets.mjs --history",
+    "check": "node tools/validate.mjs && node --test && node plugins/artel/hooks/scripts/scan-secrets.mjs --history"
   }
 }

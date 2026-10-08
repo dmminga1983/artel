@@ -1,0 +1,19 @@
+{
+  "name": "artel-data",
+  "displayName": "Artel · Data",
+  "version": "1.0.0",
+  "description": "Data pack: SQL and schema design, PostgreSQL/MySQL/SQLite, migrations, ORMs, indexes and query tuning, Redis.",
+  "author": {
+    "name": "dmminga1983",
+    "url": "https://github.com/dmminga1983"
+  },
+  "homepage": "https://github.com/dmminga1983/artel",
+  "repository": "https://github.com/dmminga1983/artel",
+  "license": "MIT",
+  "keywords": [
+    "sql",
+    "postgres",
+    "database",
+    "migrations"
+  ]
+}
